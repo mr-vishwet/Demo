@@ -1,0 +1,2 @@
+appdirs==1.4.4
+streamlit==1.20.0
