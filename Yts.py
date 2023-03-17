@@ -8,6 +8,6 @@ def download_video(url):
     st.write(video)
 
 url = st.text_input("Enter Youtube URL")
-resolution = st.selectbox("Quality : ",['1080p','720p','480p','360p','144',])
+#resolution = st.selectbox("Quality : ",['1080p','720p','480p','360p','144',])
 if st.button("Show details :"):
-    download_video(url,resolution)
+    download_video(url)
