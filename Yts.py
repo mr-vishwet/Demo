@@ -1,3 +1,6 @@
+import streamlit as st
+from pytube import YouTube
+
 def download_video(url, resolution):
     yt = YouTube(url)
     #st.image(yt.thumbnail_url)
