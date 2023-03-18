@@ -36,7 +36,8 @@ if os.path.isfile(PDF_PATH):
 
     if pdf_bytes:
         data_url = f"data:application/pdf;base64,{base64.b64encode(pdf_bytes).decode()}"
-        st.write("Data_url : ", data_url)
+        #st.write("Data_url : ", data_url)
+        st.write(" Showing PDF in PDF Viewer ")
         st.markdown(
             f'<iframe src="{data_url}" width="700" height="1000" style="border: none"></iframe>', unsafe_allow_html=True)
 
