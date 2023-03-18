@@ -21,38 +21,25 @@ def download_pdf():
     with open(PDF_PATH, "wb") as f:
         f.write(pdf_data)
 
-
-def pdf_viewer(pdf_bytes):
-    data_url = f"data:application/pdf;base64,{base64.b64encode(pdf_bytes).decode()}"
-    st.markdown(
-        f'<iframe src="{data_url}" width="800" height="1200" style="border: none;"></iframe>', unsafe_allow_html=True,)
-
-
 # Define Streamlit app
 
+st.title("PDF Viewer")
 
-def main():
-    st.title("PDF Viewer")
+# Download PDF file from GitHub repository
+download_pdf()
+st.write(PDF_PATH)
 
-    # Download PDF file from GitHub repository
-    download_pdf()
-    st.write(PDF_PATH)
+# Display PDF file contents as a PDF viewer
+if os.path.isfile(PDF_PATH):
+    with open(PDF_PATH, "rb") as f:
+        pdf_bytes = f.read()
 
-    # Display PDF file contents as a PDF viewer
-    if os.path.isfile(PDF_PATH):
+    if pdf_bytes:
+        data_url = f"data:application/pdf;base64,{base64.b64encode(pdf_bytes).decode()}"
+        st.write("Data_url : ", data_url)
+        st.markdown(
+            f'<iframe src="{data_url}" width="700" height="1000" style="border: none"></iframe>', unsafe_allow_html=True)
 
-        with open(PDF_PATH, "rb") as f:
-            pdf_bytes = f.read()
+    else:
+        st.write("Error while reading the file")
 
-        if pdf_bytes:
-            data_url = f"data:application/pdf;base64,{base64.b64encode(pdf_bytes).decode()}"
-            # st.write("Data_url : ", data_url)
-            st.markdown(
-                f'<iframe src="{data_url}" width="700" height="1000" style="border: none"></iframe>', unsafe_allow_html=True)
-
-        else:
-            st.write("Error while reading the file")
-
-
-if __name__ == "__main__":
-    main()
