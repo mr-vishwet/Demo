@@ -14,9 +14,10 @@ PDF_PATH = os.path.join(os.getcwd(), PDF_FILE)
 
 def download_pdf():
     pdf_url = f"{REPO_URL}/blob/main/{PDF_FILE}?raw=true"
-    st.write(PDF_PATH)
+    st.write("File URL : ",pdf_url)
     response = requests.get(pdf_url)
     pdf_data = response.content
+    st.write("Remote File Path : ",PDF_PATH)
     with open(PDF_PATH, "wb") as f:
         f.write(pdf_data)
 
