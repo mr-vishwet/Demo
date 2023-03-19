@@ -29,11 +29,15 @@ st.title("PDF Viewer")
 
 # Download PDF file from GitHub repository
 download_pdf()
-st.write(PDF_PATH)
-with fitz.open(PDF_PATH) as doc:
-    for page in doc:
-        st.image(page.getPixmap().tobytes(), use_column_width=True)
-
+# st.write(PDF_PATH)
+# with fitz.open(PDF_PATH) as doc:
+#     for page in doc:
+#         st.image(page.getPixmap().tobytes(), use_column_width=True)
+doc = fitz.open('sample.pdf')
+page = doc.loadPage(0)
+pix = page.getPixmap()
+pix.writePNG('image.png')
+st.image('image.png', use_column_width=True)
 # Display PDF file contents as a PDF viewer
 # if os.path.isfile(PDF_PATH):
 #     with open(PDF_PATH, "rb") as f:
