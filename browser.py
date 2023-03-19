@@ -30,6 +30,9 @@ st.title("PDF Viewer")
 # Download PDF file from GitHub repository
 download_pdf()
 st.write(PDF_PATH)
+with fitz.open(PDF_PATH) as doc:
+    for page in doc:
+        st.image(page.getPixmap().tobytes(), use_column_width=True)
 
 # Display PDF file contents as a PDF viewer
 # if os.path.isfile(PDF_PATH):
@@ -42,12 +45,12 @@ st.write(PDF_PATH)
 #         st.write(" Showing PDF in PDF Viewer ")
 #         st.markdown(f'<iframe src="{data_url}" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" style="width:100%; height:800px;" frameborder="0"></iframe>', unsafe_allow_html=True)
 
-if os.path.isfile(PDF_PATH):
-    doc = fitz.open(PDF_PATH)
-    for page in doc:
-        image_bytes = page.getPixmap().tobytes()
-        st.image(image_bytes)
-    doc.close()
-else:
-    st.write("Error while reading the file")
+# if os.path.isfile(PDF_PATH):
+#     doc = fitz.open(PDF_PATH)
+#     for page in doc:
+#         image_bytes = page.getPixmap().tobytes()
+#         st.image(image_bytes)
+#     doc.close()
+# else:
+#     st.write("Error while reading the file")
 
