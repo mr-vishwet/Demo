@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 import os
 import base64
+import fitz
+
 
 
 # Define GitHub repository URL and PDF file name
