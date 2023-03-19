@@ -6,7 +6,7 @@ import base64
 
 # Define GitHub repository URL and PDF file name
 REPO_URL = "https://github.com/mr-vishwet/Demo"
-PDF_FILE = "sample.pdf"
+PDF_FILE = "blockchain.pdf"
 PDF_PATH = os.path.join(os.getcwd(), PDF_FILE)
 
 # Define function to download PDF file from GitHub repository
